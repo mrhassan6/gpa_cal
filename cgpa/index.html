@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ECH4V6G34Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ECH4V6G34Z');
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="responsiv.css">
+    <link rel="stylesheet" href="responsiv2.css">
+    <link rel="icon" type="image/png" href="icon3.png">
+    <link href='https://fonts.googleapis.com/css?family=League Spartan' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>GPA</title>
+</head>
+<body>
+<header class="university-header">
+    <div class="header-content">
+        <div class="university-info">
+            <h2 class="uni-name">BGNU UNIVERSITY</h2>
+            <p class="dept-name">Department of Data Science</p>
+        </div>
+        <div class="policy-badge">
+            <p>According to the Policy of BGNU</p>
+        </div>
+    </div>
+</header>
+    <div class="main-div">
+        <h1><u>CGPA CALCULATOR</u></h1>
+        <div class="result-div">
+            <h4 class="resul">YOUR RESULTS</h4>
+            <div class="half-meter">
+        <div class="half-circle">
+        <div class="half-face">
+            <div class="half-needle" id="gpaHalfNeedle"></div>
+            <div class="half-center"></div>
+            <div class="half-reading" id="halfGPA">0.00</div>
+        </div>
+        <div class="half-labels">
+            <span style="left: 0%;">0</span>
+            <span style="left: 12.5%;">0.5</span>
+            <span style="left: 25%;">1</span>
+            <span style="left: 37.5%;">1.5</span>
+            <span style="left: 50%;">2</span>
+            <span style="left: 62.5%;">2.5</span>
+            <span style="left: 75%;">3</span>
+            <span style="left: 87.5%;">3.5</span>
+            <span style="left: 100%;">4</span>
+        </div>
+    </div>
+    <div class="detail-sec">
+    <span class="detail-item">CGPA: <span id="liveGPA">0.00</span></span><br>
+    <!--<span class="detail-item">Grade: <span id="liveGrade">F</span></span>-->
+    <span class="detail-item">Percentage: <span id="livePercentage">0%</span></span>
+</div>
+</div>
+            </div>
+        <div class="div-2">           
+            <nav>
+            </nav>
+            <div class="div-3">
+                <h3 class="detail">Enter Your Previous GPA</h3>
+    <div class="s1">Semester 1
+        <input type="number" name="gpa" class="sub1" placeholder="Enter GPA" id="sem1" step="0.01" min="0" max="4" oninput="if(this.value>4) this.value=4; if(this.value<0)this.value=0; updateHalfMeter(); updateTopSection();">
+    </div>
+    <div class="s1">Semester 2
+        <input type="number" name="gpa" class="sub1" placeholder="Enter GPA" id="sem2" step="0.01" min="0" max="4" oninput="if(this.value>4) this.value=4; if(this.value<0)this.value=0; updateHalfMeter(); updateTopSection();">
+    </div>
+    <div class="s1">Semester 3
+        <input type="number" name="gpa" class="sub1" placeholder="Enter GPA" id="sem3" step="0.01" min="0" max="4" oninput="if(this.value>4) this.value=4; if(this.value<0)this.value=0; updateHalfMeter(); updateTopSection();">
+    </div>
+    <div class="s1">Semester 4
+        <input type="number" name="gpa" class="sub1" placeholder="Enter GPA" id="sem4" step="0.01" min="0" max="4" oninput="if(this.value>4) this.value=4; if(this.value<0)this.value=0; updateHalfMeter(); updateTopSection();">
+    </div>
+    <div class="s1">Semester 5
+        <input type="number" name="gpa" class="sub1" placeholder="Enter GPA" id="sem5" step="0.01" min="0" max="4" oninput="if(this.value>4) this.value=4; if(this.value<0)this.value=0; updateHalfMeter(); updateTopSection();">
+    </div>
+    <div class="s1">Semester 6
+        <input type="number" name="gpa" class="sub1" placeholder="Enter GPA" id="sem6" step="0.01" min="0" max="4" oninput="if(this.value>4) this.value=4; if(this.value<0)this.value=0; updateHalfMeter(); updateTopSection();">
+    </div>
+    <div class="s1">Semester 7
+        <input type="number" name="gpa" class="sub1" placeholder="Enter GPA" id="sem7" step="0.01" min="0" max="4" oninput="if(this.value>4) this.value=4; if(this.value<0)this.value=0; updateHalfMeter(); updateTopSection();">
+    </div>
+    <div class="s1">Semester 8
+        <input type="number" name="gpa" class="sub1" placeholder="Enter GPA" id="sem8" step="0.01" min="0" max="4" oninput="if(this.value>4) this.value=4; if(this.value<0)this.value=0; updateHalfMeter(); updateTopSection();">
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            
+            <div class="footer-section" id="footer-section-1">
+                <p>Effort by <span class="highlight"><u>Mr. Hassan</u></span></p>
+                <p>Effort by <span class="highlight"><u>Ali Hassan</u></span></p>
+                <p class="copyright">© 2026 All rights reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect with Me:</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/mhassan.6" target="_blank" class="social-link facebook" id="fb1">
+                        <i class="bi bi-facebook" id="fbb"></i>
+                        <div class="fb">Facebook</div>
+                    </a>
+                    </a>
+                    <a href="https://wa.me/+923107612528" target="_blank" class="social-link whatsapp"
+                    id="ws1">
+                        <i class="bi bi-whatsapp" id="wss"></i>
+                        <div class="ws">WS</div>
+                    </a>
+                    <!--<a href="https://instagram.com/mhassan.6" target="_blank" class="social-link instagram">
+                        <i class="bi bi-instagram"></i>
+                        <div class="insta">Insta</div>
+                    </a>-->
+                    
+                    <a href="https://github.com/mhassan45634-cyber" target="_blank" class="social-link github" id="git1">
+                        <i class="bi bi-github" id="gitt"></i>
+                        <div class="git">GitHub</div>
+                    </a>
+                </div>
+            </div>     
+        </div>   
+        <div class="footer-bottom">
+            <p>STUDENTS OF DATA SCIENCE, BGNU</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

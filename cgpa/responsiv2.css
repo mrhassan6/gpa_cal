@@ -1,0 +1,28 @@
+@media screen and (max-width: 768px) {
+
+}
+@media screen and (max-width: 480px) {
+    .sub1{
+        width: 140px;
+        margin-left: 179px;
+        margin-bottom: 20px;
+    }
+    .s1{
+        padding-top: 20px !important;
+        padding-bottom: 0px !important;
+        padding-left: 30px !important;
+        height: 20px !important;
+    }
+}
+@media screen and (max-width: 360px) {
+    .sub1{
+        width: 140px;
+        margin-left: 129px;
+        margin-bottom: 20px;
+    }
+    .s1{
+        padding-top: 20px !important;
+        padding-bottom: 0px !important;
+        height: 20px !important;
+    }
+}
