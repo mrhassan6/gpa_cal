@@ -17,7 +17,7 @@
     .gpa, .cgpa, .contact, .grading{
         width: 350px;
         max-height: 100px !important;
-        border: solid black 1px;
+        border: solid rgb(245, 241, 241) 1px;
     }
     h2{
         font-size: 1.3rem;
@@ -59,7 +59,7 @@
         height: 410px;
     }
     .gpa, .cgpa, .contact, .grading{
-        border: solid black 1px;
+        border: solid rgb(245, 241, 241) 1px;
         width: 290px;
         max-height: 100px !important;
     }
