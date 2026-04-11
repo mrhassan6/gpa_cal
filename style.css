@@ -85,9 +85,8 @@ h5{
     width: 150px;
     height: 165px;
     position: absolute; 
-    top: 14%; 
-    left: 50%; 
-    transform: translate(-50%, -50%);
+    top: 0%; 
+    left: 590px;    
 }
 footer{
     text-align: center;
