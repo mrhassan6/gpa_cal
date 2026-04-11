@@ -2,6 +2,9 @@
 
 }
 @media screen and (max-width: 480px) {
+    body{
+        width: fit-content;
+    }
     h1{
         font-size: 3rem;
     }
@@ -17,7 +20,7 @@
     .gpa, .cgpa, .contact, .grading{
         width: 350px;
         max-height: 100px !important;
-        border: solid black 1px;
+        border: solid rgb(245, 241, 241) 1px;
     }
     h2{
         font-size: 1.3rem;
