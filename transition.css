@@ -1,0 +1,46 @@
+.main {
+    grid-template-columns: repeat(2, 1fr);
+}
+.gpa, .cgpa, .grading, .contact {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+    animation: cardReveal 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+.gpa { animation-delay: 0.1s; }
+.cgpa { animation-delay: 0.3s; }
+.grading { animation-delay: 0.5s; }
+.contact { animation-delay: 0.7s; }
+
+@keyframes cardReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+h1, h3, footer {
+    opacity: 0;
+    animation: fadeInDown 0.8s ease forwards;
+}
+
+.logo { animation-delay: 0.1s; }
+h1 { animation-delay: 0.3s; }
+h3 { animation-delay: 0.5s; }
+footer{ animation-delay: 0.5s; }
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
