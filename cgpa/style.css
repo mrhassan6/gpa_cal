@@ -470,7 +470,7 @@ select{
     font-family: 'League Spartan';
     transform: perspective(500px) rotateX(2deg);
     -webkit-text-stroke: 1px rgb(222, 222, 222);
-    width: 350px;
+    width: 420px;
 }
 
 .dept-name {
