@@ -99,12 +99,13 @@
     .s1 {
         flex-direction: column;
         align-items: flex-start;
+        width: 320px;
         gap: 10px;
-        height: auto;
         position: relative !important;
-        height: 105px !important;  /* Fixed height for 3 lines */
+        height: 105px !important; 
         padding: 5px !important;
         margin-bottom: 15px !important;
+        margin: 0 auto;
         background: snow !important;
         border-radius: 16px !important;
     }
@@ -130,7 +131,7 @@
         top: 40px !important;
         right: 10px !important;
         width: 42% !important;
-        height: 30px !important;
+        height: 27px !important;
         margin: 0 !important;
         border-radius: 10px !important;
         font-weight: bold !important;
@@ -159,12 +160,11 @@
         padding-top: 2px !important;
     }
     .div-2 {
-        width: 90%;
+        width: 87%;
         padding: 12px;
         height: auto;
     } 
-    .footer{
-        
+    .footer{ 
         padding: 20px 0 0 0;
         margin-right: 0px;
         width: 100%;
@@ -189,18 +189,18 @@
     } 
 
     .main-div{
-        margin-left: 0px;
-        margin-right: 0px;
+        margin: 0 auto;
     }  
     .footer {
         padding: 30px 0 0 0;
-        height: 220px !important;
+        height: 200px !important;
     }    
     .footer-section h3 {
         font-size: 1.1rem;
         margin-top: 6px;
     }   
     .social-links {
+        display: none;
         width: 0%;
         align-items: center;
         gap: 10px;
@@ -259,6 +259,9 @@
     .footer-section{
         flex: 0 0 0px !important;
         height: 33px;
+    }
+    .footi{
+        display: none !important;
     }
     .sub1 {
         width: 100%;
@@ -381,6 +384,7 @@ h1{
 }
 .header-content{
     gap: 10px;
+    margin: 0 auto;
 }
 }  
 @media screen and (max-width: 360px) {
@@ -416,7 +420,7 @@ h1{
         top: 40px !important;
         right: 10px !important;
         width: 42% !important;
-        height: 30px !important;
+        height: 27px !important;
         margin: 0 !important;
         border-radius: 10px !important;
         font-weight: bold !important;
