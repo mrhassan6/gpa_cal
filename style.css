@@ -43,7 +43,7 @@ h3{
     border-radius: 15px;
     gap: 50px;
     border: solid rgb(245, 241, 241) 2px;
-    background: linear-gradient(#b4bbff, #4684ff);
+    background: linear-gradient(#b4bbff, #3074fc);
     margin-bottom: 20px;
     align-content: center;
     align-items: center;
@@ -67,7 +67,7 @@ h4{
     padding-left: 23px;
     padding-bottom: 8px;
     border: 0px;
-    color: rgb(57, 57, 57);
+    color: rgb(32, 29, 61);
     font-size: 2rem;
     text-decoration: none;
 }
@@ -98,7 +98,7 @@ h5{
 }
 footer{
     text-align: center;
-    margin-top: 90px;
+    margin-top: 5px;
 }
 .link{
     text-decoration: none;
@@ -110,4 +110,14 @@ footer{
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2),
                 0 0 0 3px rgba(255, 255, 255, 0.5),
                 0 0 0 6px #b4ffa5;
+}
+h6{
+    margin: 0 auto;
+    padding: 0px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.6rem;
+    margin-top: 80px;
+    color: #2803f8;
+    text-decoration: underline;
 }
