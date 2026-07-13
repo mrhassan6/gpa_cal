@@ -47,9 +47,7 @@
         height: 140px;
     }
 
-    #total-gpa {
-        font-size: 2.8rem !important;
-    }
+    
 
     /* Font size scaling for side-by-side layout on mobile */
     .stat-badge {
@@ -90,7 +88,7 @@
     }
 
     #total-gpa {
-        font-size: 2rem !important;
+        font-size: 1.6rem !important;
     }
 
     /* Font size scaling for side-by-side layout on mobile */
