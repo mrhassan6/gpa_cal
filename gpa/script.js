@@ -1,4 +1,22 @@
-function points(marks){
+document.addEventListener('DOMContentLoaded', () => {
+    const subjectCards = document.querySelectorAll('.subject-card');
+    const gpaDisplay = document.getElementById('total-gpa');
+    const percentDisplay = document.getElementById('total-percentage');
+    const gradeDisplay = document.getElementById('total-grade');
+    const gpaMeter = document.getElementById('gpa-meter');
+
+    // State variables to track previous values for smooth animation
+    let currentGPA = 0;
+    let currentPercentage = 0;
+
+    subjectCards.forEach(card => {
+        const inputs = card.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateFinalScores);
+        });
+    });
+
+function getGP(marks){
     marks=Math.floor(marks);
     if(marks>=85 && marks<=100){
         return 4.0;
@@ -26,39 +44,6 @@ function points(marks){
     }
 }
 
-function calGPA(){
-    let totalCreditPoints=0;
-    let totalCredits=0;
-    let totalmarks=0;
-    let totalsub=0;
-    
-    for(let i=1; i<=8; i++){
-        let credits=document.getElementById('c' + i).value;
-        let marks=document.getElementById('m' + i).value;
-        marks=Math.floor(marks);
-        if(credits && marks){
-            credits=parseFloat(credits);
-            marks=parseFloat(marks);
-            if(marks>=0 && marks<=100){
-                totalsub++;
-                let gradePoint=points(marks);
-                totalCreditPoints += credits*gradePoint;
-                totalCredits += credits;
-                totalmarks+=marks;
-            }
-        }
-    }     
-    let gpa=totalCredits>0 ? (totalCreditPoints/totalCredits):0;
-    return{
-        gpa: gpa.toFixed(2),
-        grade: getGrade(gpa),
-        totalCredits: totalCredits,
-        totalmarks:totalmarks,
-        totalsub:totalsub,
-        totalPoints: totalCreditPoints.toFixed(2)
-    };
-}
-
 function getGrade(gpa){
     gpa=parseFloat(gpa);
     gpa=parseFloat(gpa.toFixed(2));
@@ -70,62 +55,102 @@ function getGrade(gpa){
     else if(gpa>=2.00 && gpa<=2.28) return 'D';  
     else if(gpa<2) return 'F';
 }
-
-function updateGP(subjectNumber){
-    let marksInput=document.getElementById('m' + subjectNumber);
-    let gpDisplay=document.getElementById('gp' + subjectNumber);   
-    if(!marksInput || !gpDisplay) return;    
-    let marks=marksInput.value; 
-    marks=Math.floor(marks);   
-    if(marks && marks>=0 && marks<=100){
-        let gradePoint=points(parseFloat(marks));
-        gpDisplay.textContent=gradePoint.toFixed(2);              
-    }else{
-        gpDisplay.textContent='0.00';
+    // Advanced Smooth Number Counter Animation
+    function animateValue(element, start, end, duration, isPercent = false) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            // Easing function for smooth stop
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const currentVal = (start + (end - start) * easeOutQuart).toFixed(2);
+            
+            element.innerHTML = currentVal + (isPercent ? '' : '');
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
     }
-}
 
-function updateHalfMeter() {
-    let results = calGPA(); 
-    let gpa = parseFloat(results.gpa);
-    document.getElementById('halfGPA').textContent = results.gpa;
-    let targetRotation = -90 + (gpa / 4) * 180;
-    let needle = document.getElementById('gpaHalfNeedle');
-    let currentRotation = -90;
-    
-    function step() {
-        if (currentRotation < targetRotation) {
-            currentRotation += 2;
-            needle.style.transform = `translateX(-50%) rotate(${currentRotation}deg)`;
-            setTimeout(step, 7);
-        } else if (currentRotation > targetRotation) {
-            currentRotation -= 2;
-            needle.style.transform = `translateX(-50%) rotate(${currentRotation}deg)`;
-            setTimeout(step, 7);
+    function calculateFinalScores() {
+        let totalCredits = 0;
+        let totalQualityPts = 0;
+        let totalMarks = 0;
+        let validSubjects = 0;
+
+        subjectCards.forEach(card => {
+            const chInput = card.querySelector('.ch-input');
+            const marksInput = card.querySelector('.marks-input');
+            const gpLabel = card.querySelector('.live-gp');
+
+            // Get raw values
+            let ch = parseFloat(chInput.value);
+            let marks = parseFloat(marksInput.value);
+
+            // Cap Credit Hours (Max 4, Min 0)
+            if (!isNaN(ch)) {
+                if (ch > 4) ch = 4;
+                if (ch < 0) ch = 0;
+                chInput.value = ch; // Updates the input box automatically
+            } else {
+                ch = 0;
+            }
+
+            // Cap Marks (Max 100, Min 0) and Round Decimals
+            if (marksInput.value !== '' && !isNaN(marks)) {
+                marks = Math.round(marks); // Rounds decimals to nearest integer
+                
+                if (marks > 100) marks = 100;
+                if (marks < 0) marks = 0;
+                marksInput.value = marks; // Updates the input box automatically
+                
+                const gp = getGP(marks);
+                
+                gpLabel.textContent = gp.toFixed(2);
+                totalCredits += ch;
+                totalQualityPts += (gp * ch);
+                totalMarks += marks;
+                validSubjects++;
+            } else {
+                gpLabel.textContent = "0.00";
+            }
+        });
+
+        let targetGPA = 0;
+        let targetPercentage = 0;
+        let targetGrade = '-';
+
+        if (validSubjects > 0 && totalCredits > 0) {
+            targetGPA = totalQualityPts / totalCredits;
+            targetPercentage = totalMarks / validSubjects;
+            targetGrade = getGrade(targetGPA);
         }
-    }
-    step();
-}
 
-function updateTopSection(){
-    let results=calGPA(); 
-    let gpa=parseFloat(results.gpa);
-    let sub=parseFloat(results.totalsub);
-    let obt_marks=parseFloat(results.totalmarks);
-    let percentage=((obt_marks/(sub*100)))*100;
-    if(percentage){
-        document.getElementById('livePercentage').textContent = percentage.toFixed(1) + '%';
-    }else{
-        document.getElementById('livePercentage').textContent = 0.0+ '%';
-    }
-    document.getElementById('liveGPA').textContent = results.gpa;
-    document.getElementById('liveGrade').textContent = results.grade;
-}
+        // Animate Numbers if they changed
+        if (targetGPA !== currentGPA) {
+            animateValue(gpaDisplay, currentGPA, targetGPA, 1000);
+            currentGPA = targetGPA;
+        }
 
-window.onload=function(){
-    for(let i=1; i<=8; i++){
-        updateGP(i);
+        if (targetPercentage !== currentPercentage) {
+            animateValue(percentDisplay, currentPercentage, targetPercentage, 1000, true);
+            currentPercentage = targetPercentage;
+        }
+
+        // Pop Animation for Grade
+        if (gradeDisplay.textContent !== targetGrade) {
+            gradeDisplay.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                gradeDisplay.textContent = targetGrade;
+                gradeDisplay.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        // Smooth transition for the circular meter based on target GPA
+        const degrees = (targetGPA / 4.0) * 360;
+        gpaMeter.style.background = `conic-gradient(from 0deg, #3b82f6 0deg, #8b5cf6 ${degrees}deg, #e2e8f0 ${degrees}deg)`;
     }
-    updateHalfMeter();
-    updateTopSection();
-};
+});
