@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hassan | Modern Portfolio & Resume</title>
+    <title>M. Hassan's Resume</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -98,24 +98,53 @@
 </head>
 <body class="antialiased selection:bg-pink-100 selection:text-pink-900">
 
-    <!-- Navigation -->
+    <!-- Desktop & Mobile Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-pink-50 no-print transition-all py-4">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="#" class="font-bold text-2xl tracking-tight text-slate-800">
-                Hassan<span class="text-pink-500">.</span>
+                Muhammad Hassan<span class="text-pink-500">.</span>
             </a>
-            <div class="hidden md:flex gap-8 font-medium text-sm text-slate-600">
-                <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex gap-8 font-medium text-sm text-slate-600 items-center">
+                <a href="#hero" class="hover:text-blue-600 transition-colors">About</a>
                 <a href="#services" class="hover:text-pink-500 transition-colors">Services</a>
                 <a href="#skills" class="hover:text-blue-600 transition-colors">Skills</a>
                 <a href="#projects" class="hover:text-pink-500 transition-colors">Projects</a>
                 <a href="#education" class="hover:text-blue-600 transition-colors">Education</a>
+                <a href="#contact" class="hover:text-pink-500 transition-colors">Contact</a>
+               
             </div>
-            <button onclick="window.print()" class="bg-gradient-custom hover:opacity-90 text-white px-6 py-2.5 rounded-full transition-all flex items-center gap-2 text-sm font-semibold shadow-lg shadow-pink-200">
-                <i class="fa-solid fa-download"></i> Get Resume
+
+            <!-- Hamburger Button for Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-slate-800 focus:outline-none hover:text-pink-500 transition-colors">
+                <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Sidebar Menu Overlay -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[55] hidden opacity-0 transition-opacity duration-300 no-print"></div>
+
+    <!-- Mobile Sidebar Drawer -->
+    <div id="mobile-sidebar" class="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-[60] flex flex-col no-print">
+        <div class="p-6 flex justify-between items-center border-b border-slate-100">
+            <span class="font-bold text-xl text-slate-800">Menu<span class="text-pink-500">.</span></span>
+            <button id="close-menu-btn" class="text-slate-500 hover:text-pink-500 text-2xl transition-colors focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 p-6 font-medium text-slate-600 overflow-y-auto">
+            <a href="#hero" class="mobile-link hover:text-blue-600 transition-colors flex items-center gap-3"><i class="fa-solid fa-user text-pink-500 w-5"></i> About</a>
+            <a href="#services" class="mobile-link hover:text-pink-500 transition-colors flex items-center gap-3"><i class="fa-solid fa-briefcase text-blue-500 w-5"></i> Services</a>
+            <a href="#skills" class="mobile-link hover:text-blue-600 transition-colors flex items-center gap-3"><i class="fa-solid fa-laptop-code text-pink-500 w-5"></i> Skills</a>
+            <a href="#projects" class="mobile-link hover:text-pink-500 transition-colors flex items-center gap-3"><i class="fa-solid fa-folder-open text-blue-500 w-5"></i> Projects</a>
+            <a href="#education" class="mobile-link hover:text-blue-600 transition-colors flex items-center gap-3"><i class="fa-solid fa-graduation-cap text-pink-500 w-5"></i> Education</a>
+            <a href="#contact" class="mobile-link hover:text-pink-500 transition-colors flex items-center gap-3"><i class="fa-solid fa-envelope text-blue-500 w-5"></i> Contact</a>
+            
+            
+        </div>
+    </div>
 
     <!-- Main Wrapper -->
     <main class="max-w-7xl mx-auto px-6 pt-32 pb-24 space-y-40">
@@ -136,27 +165,26 @@
                 </h1>
                 
                 <p class="text-slate-500 text-lg md:text-xl max-w-2xl leading-relaxed mx-auto lg:mx-0">
-                    I am Hassan, a Data Science student and Full-Stack Developer. I specialize in building highly functional web applications and auditing network security environments.
+                    I'm Hassan, Student of Data Science and Full-Stack Developer. I specialize in building highly functional web applications and auditing network security environments.
                 </p>
                 
                 <div class="flex flex-wrap gap-5 justify-center lg:justify-start pt-4 no-print">
-                    <a href="mailto:hassan@example.com" class="px-8 py-4 bg-gradient-custom text-white font-semibold rounded-full transition-all shadow-xl shadow-blue-500/20 hover:shadow-pink-500/30 hover:-translate-y-1 flex items-center gap-2 text-lg">
+                    <a href="https://wa.me/+923107612528" class="px-8 py-4 bg-gradient-custom text-white font-semibold rounded-full transition-all shadow-xl shadow-blue-500/20 hover:shadow-pink-500/30 hover:-translate-y-1 flex items-center gap-2 text-lg">
                         <i class="fa-solid fa-paper-plane"></i> Let's Talk
                     </a>
-                    <a href="https://github.com" target="_blank" class="px-8 py-4 bg-white border-2 border-slate-100 text-slate-700 font-semibold rounded-full transition-all shadow-sm hover:border-blue-200 hover:text-blue-600 flex items-center gap-2 text-lg">
+                    <a href="https://github.com/mrhassan6" target="_blank" class="px-8 py-4 bg-white border-2 border-slate-100 text-slate-700 font-semibold rounded-full transition-all shadow-sm hover:border-blue-200 hover:text-blue-600 flex items-center gap-2 text-lg">
                         <i class="fa-brands fa-github text-xl"></i> GitHub Profile
                     </a>
                 </div>
             </div>
 
             <!-- PROFILE PICTURE SECTION -->
-            <!-- ADD YOUR IMAGE SRC HERE -->
             <div class="w-72 h-72 md:w-96 md:h-96 flex-shrink-0 relative group">
                 <div class="profile-ring group-hover:scale-105 transition-transform duration-500 no-print"></div>
                 <div class="w-full h-full rounded-full border-8 border-white bg-slate-50 relative z-10 overflow-hidden shadow-2xl">
                     <img 
                         src="pff2.JPG" 
-                        alt="Hassan's Profile" 
+                        alt="Hassan Profile" 
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     >
                 </div>
@@ -164,7 +192,7 @@
         </section>
 
 
-        <!-- WHAT I DO (SERVICES) SECTION - Adds length and volume -->
+        <!-- WHAT I DO (SERVICES) SECTION -->
         <section id="services" class="reveal bg-slate-50 -mx-6 px-6 py-24 rounded-3xl no-print">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
@@ -186,7 +214,7 @@
                             <i class="fa-solid fa-server"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-3">Backend & Systems</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Architecting robust server-side logic and database management using PHP and Node.js. Implementing WebSockets for real-time data.</p>
+                        <p class="text-slate-500 text-sm leading-relaxed">Architecting robust server-side logic and database management using PHP. Implementing WebSockets for real-time data.</p>
                     </div>
 
                     <div class="modern-card p-8 text-center">
@@ -228,7 +256,7 @@
                             </div>
                         </div>
                         <div>
-                            <div class="flex justify-between font-semibold mb-2"><span class="text-slate-700">PHP & Node.js</span><span class="text-pink-500">90%</span></div>
+                            <div class="flex justify-between font-semibold mb-2"><span class="text-slate-700">PHP & LARAVEL</span><span class="text-pink-500">90%</span></div>
                             <div class="h-3 w-full bg-slate-100 rounded-full overflow-hidden">
                                 <div class="progress-bar h-full bg-pink-500 rounded-full relative" data-width="90%"></div>
                             </div>
@@ -256,13 +284,13 @@
                             </div>
                         </div>
                         <div>
-                            <div class="flex justify-between font-semibold mb-2"><span class="text-slate-700">Nmap & OpenVAS</span><span class="text-pink-500">80%</span></div>
+                            <div class="flex justify-between font-semibold mb-2"><span class="text-slate-700">Nmap & SqlMap</span><span class="text-pink-500">80%</span></div>
                             <div class="h-3 w-full bg-slate-100 rounded-full overflow-hidden">
                                 <div class="progress-bar h-full bg-pink-500 rounded-full relative" data-width="80%"></div>
                             </div>
                         </div>
                         <div>
-                            <div class="flex justify-between font-semibold mb-2"><span class="text-slate-700">Nessus & Git</span><span class="text-blue-500">85%</span></div>
+                            <div class="flex justify-between font-semibold mb-2"><span class="text-slate-700">Burp Suite</span><span class="text-blue-500">85%</span></div>
                             <div class="h-3 w-full bg-slate-100 rounded-full overflow-hidden">
                                 <div class="progress-bar h-full bg-blue-500 rounded-full relative" data-width="85%"></div>
                             </div>
@@ -285,7 +313,7 @@
                 <div class="relative">
                     <div class="absolute -left-[42px] top-1 w-6 h-6 bg-white border-4 border-blue-500 rounded-full shadow-md"></div>
                     <div class="modern-card p-8">
-                        <span class="text-pink-500 font-bold text-sm tracking-wider uppercase mb-2 block">2024 - Present</span>
+                        <span class="text-pink-500 font-bold text-sm tracking-wider uppercase mb-2 block">2025 - Present</span>
                         <h3 class="text-2xl font-bold text-slate-800 mb-1">Freelance Full-Stack Developer</h3>
                         <p class="text-slate-500 font-medium mb-4">Remote / Independent</p>
                         <p class="text-slate-600 leading-relaxed">
@@ -298,7 +326,7 @@
                 <div class="relative">
                     <div class="absolute -left-[42px] top-1 w-6 h-6 bg-white border-4 border-pink-500 rounded-full shadow-md"></div>
                     <div class="modern-card p-8">
-                        <span class="text-blue-500 font-bold text-sm tracking-wider uppercase mb-2 block">2023 - 2024</span>
+                        <span class="text-blue-500 font-bold text-sm tracking-wider uppercase mb-2 block">2025 - 2026</span>
                         <h3 class="text-2xl font-bold text-slate-800 mb-1">Network Security Enthusiast</h3>
                         <p class="text-slate-500 font-medium mb-4">Self-Directed Projects</p>
                         <p class="text-slate-600 leading-relaxed">
@@ -373,7 +401,6 @@
 
 
         <!-- EDUCATION SECTION -->
-        <!-- EDUCATION SECTION -->
         <section id="education" class="reveal">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Education</h2>
@@ -395,7 +422,7 @@
                             </h5>
                         </div>
                         <span class="bg-gradient-custom text-white text-sm font-bold px-6 py-2 rounded-full mt-6 md:mt-0 shadow-lg shadow-pink-200">
-                            Expected: [Year]
+                            2025 - 2028
                         </span>
                     </div>
                     
@@ -417,7 +444,7 @@
                             </h5>
                         </div>
                         <span class="bg-slate-100 text-slate-600 border border-slate-200 text-sm font-bold px-6 py-2 rounded-full mt-6 md:mt-0">
-                            [Start Year] - [End Year]
+                            2023 - 2024
                         </span>
                     </div>
                     
@@ -428,8 +455,8 @@
             </div>
         </section>
 
-        <!-- LARGE FOOTER / CONTACT -->
-        <footer class="text-center pt-24 pb-12 reveal no-print">
+        <!-- LARGE FOOTER / CONTACT (ID added for navigation) -->
+        <footer id="contact" class="text-center pt-24 pb-12 reveal no-print">
             <div class="bg-slate-900 text-white rounded-3xl p-12 md:p-20 relative overflow-hidden shadow-2xl">
                 <!-- Footer Background Gradients -->
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-custom"></div>
@@ -444,14 +471,16 @@
                 </a>
 
                 <div class="flex justify-center gap-6 mt-16 relative z-10">
-                    <a href="#" class="w-14 h-14 bg-white/10 hover:bg-blue-500 rounded-full flex items-center justify-center text-white transition-colors text-xl">
-                        <i class="fa-brands fa-linkedin-in"></i>
+                    <a href="https://wa.me/+923107612528" target="_blank" class="w-14 h-14 bg-white/10 hover:bg-green-500 rounded-full flex items-center justify-center text-white transition-colors text-xl">
+                        <i class="fa-brands fa-whatsapp"></i>
                     </a>
-                    <a href="#" class="w-14 h-14 bg-white/10 hover:bg-pink-500 rounded-full flex items-center justify-center text-white transition-colors text-xl">
+
+                    <a href="https://facebook.com/mhassan.6" target="_blank" class="w-14 h-14 bg-white/10 hover:bg-blue-600 rounded-full flex items-center justify-center text-white transition-colors text-xl">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://github.com/mrhassan6" target="_blank" class="w-14 h-14 bg-white/10 hover:bg-pink-500 rounded-full flex items-center justify-center text-white transition-colors text-xl">
                         <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="#" class="w-14 h-14 bg-white/10 hover:bg-blue-500 rounded-full flex items-center justify-center text-white transition-colors text-xl">
-                        <i class="fa-solid fa-envelope"></i>
                     </a>
                 </div>
             </div>
@@ -496,6 +525,36 @@
             window.addEventListener('scroll', revealOnScroll);
             // Trigger immediately for items above the fold
             setTimeout(revealOnScroll, 100); 
+
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileSidebar = document.getElementById('mobile-sidebar');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function openMenu() {
+                mobileOverlay.classList.remove('hidden');
+                // Small delay to allow display to change before animating opacity
+                setTimeout(() => mobileOverlay.classList.remove('opacity-0'), 10);
+                mobileSidebar.classList.remove('translate-x-full');
+            }
+
+            function closeMenu() {
+                mobileSidebar.classList.add('translate-x-full');
+                mobileOverlay.classList.add('opacity-0');
+                // Wait for animation to finish before hiding
+                setTimeout(() => mobileOverlay.classList.add('hidden'), 300);
+            }
+
+            mobileMenuBtn.addEventListener('click', openMenu);
+            closeMenuBtn.addEventListener('click', closeMenu);
+            mobileOverlay.addEventListener('click', closeMenu);
+            
+            // Close menu when any link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
         });
     </script>
 </body>
