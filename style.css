@@ -1,123 +1,95 @@
-body{
-    margin: 0px;
-    padding: 0px;
-    padding-top: 6px;
-    padding-bottom: 8px;
-    background-color: rgb(149, 253, 253);
-}
-h1{
-    text-align: center;
-    font-size: 4rem;
-    color: rgb(1, 6, 109);
-    margin-bottom: 0px;
-    margin-top: 140px;
-}
-h3{
-    text-align: center;
-    font-size: 1.6rem;
-    padding: 0px;
-    margin: 0px;
-}
-.main{
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 10px;
-    height: 400px;
-    width: 600px;
-    text-align: center;
-    align-items: center;
-    align-content: center;
-    align-self: center;
-    gap: 35px;
-    justify-content: center;
-    flex-direction: row;  
-    margin: 0 auto; 
-    margin-top: 40px;
-}
-.gpa, .cgpa, .contact, .grading{
-    color: aliceblue;
-    width: 370px;
-    text-align: left;
-    align-self: center;
-    height: 155px;
-    border-radius: 15px;
-    gap: 50px;
-    border: solid rgb(245, 241, 241) 2px;
-    background: linear-gradient(#b4bbff, #3074fc);
-    margin-bottom: 20px;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    box-shadow:0 8px 8px rgba(0,0,0,0.08),
-        0 8px 8px rgba(0,0,0,0.08),
-        0 4px 4px rgba(112, 109, 109, 0.08),
-        0 8px 8px rgba(113, 111, 111, 0.08),
-        0 16px 16px rgba(116, 113, 113, 0.08),
-        0 32px 32px rgba(119, 114, 114, 0.08);
-}
-.text{
-    color: rgb(47, 47, 47);
-    padding-top: 0px;
-    padding-left: 20px;
-    margin-top: 0px;
-}
-h4{
-    padding: 0px;
-    margin: 0px;
-    padding-left: 23px;
-    padding-bottom: 8px;
-    border: 0px;
-    color: rgb(32, 29, 61);
-    font-size: 2rem;
-    text-decoration: none;
+/* Base Utilities */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-h2{
-    margin-bottom: 2px;
-    font-size: 1.8rem;
-}
-h5{
-    font-size: 1rem;
-    margin: 0px;
-    padding: 0px;
-    text-decoration: none;
-    padding-left: 20px;
-    color: rgb(224, 224, 224);
-}
-.logo{
-    width: 150px;
-    height: 165px;
+/* Sharp Glass Card Design */
+.glass-card {
+    position: relative;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    top: 0%; 
-    left: 590px;    
-}
-.logo1{
-    height: 30px;
-}
-footer{
-    text-align: center;
-    margin-top: 5px;
-}
-.link{
+    /* Responsive sizing handled here */
+    min-height: 120px; 
+    padding: 1.2rem 1.5rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
     text-decoration: none;
-    margin: 0px;
-    padding: 0px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateZ(0);
 }
-.gpa:hover, .cgpa:hover, .grading:hover, .contact:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2),
-                0 0 0 3px rgba(255, 255, 255, 0.5),
-                0 0 0 6px #b4ffa5;
+
+/* Desktop sizing adjustments */
+@media (min-width: 768px) {
+    .glass-card {
+        min-height: 150px;
+        padding: 1.5rem 2rem;
+        border-radius: 20px;
+    }
 }
-h6{
-    margin: 0 auto;
-    padding: 0px;
-    text-decoration: none;
-    text-align: center;
-    font-size: 1.6rem;
-    margin-top: 80px;
-    color: #2803f8;
-    text-decoration: underline;
+
+/* Specific Color Hover Physics */
+.card-blue:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #3b82f6;
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
 }
+
+.card-pink:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #ec4899;
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.15);
+}
+
+.card-green:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #10b981;
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+}
+
+/* Custom Keyframe Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUpCard {
+    0% { opacity: 0; transform: scale(0.95) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* Ambient Background Pulse */
+@keyframes pulseSlow {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+/* Animation Classes */
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+.animate-fade-in-down { animation: fadeInDown 0.8s ease-out forwards; opacity: 0; }
+.animate-slide-up { animation: slideUpCard 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
+.animate-pulse-slow { animation: pulseSlow 8s infinite ease-in-out; }
+.animate-pulse-slower { animation: pulseSlow 12s infinite ease-in-out reverse; }
+.animate-float { animation: float 10s infinite ease-in-out; }
+
+/* Staggered Delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
