@@ -35,20 +35,21 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
         }
 
+        /* PATCH 1: Locked font-size to 16px to prevent iOS Safari auto-zoom glitch */
         .input-field {
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid #e2e8f0;
             border-radius: 0.5rem;
             padding: 0.7rem 0.8rem;
-            font-size: 0.9rem;
+            font-size: 16px; 
             font-weight: 600;
             color: #334155;
             outline: none;
             transition: border-color 0.3s ease;
         }
         .input-field:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
-        .input-field[type="file"] { padding: 0.5rem; font-size: 0.8rem; cursor: pointer; }
+        .input-field[type="file"] { padding: 0.5rem; cursor: pointer; }
         
         .char-count { font-size: 0.7rem; font-weight: 700; color: #64748b; text-align: right; margin-top: 0.25rem; }
         
@@ -104,40 +105,39 @@
 
         <div class="glass-container w-full rounded-[2rem] p-5 md:p-10 relative">
             
-            <!-- TRUE FORM TAG FOR NATIVE VALIDATION -->
             <form id="resume-form" onsubmit="compileResume(event)">
                 
                 <!-- 1. PERSONAL DATA -->
                 <h2 class="section-title text-blue-600 border-blue-200 mt-0">1. Personal Identity</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                        <label for="f-name" class="block text-xs font-bold text-slate-700 uppercase mb-1 cursor-pointer">Full Name</label>
                         <input type="text" id="f-name" class="input-field" maxlength="18" placeholder="e.g., John Doe" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Job Title</label>
+                        <label for="f-title" class="block text-xs font-bold text-slate-700 uppercase mb-1 cursor-pointer">Job Title</label>
                         <input type="text" id="f-title" class="input-field" maxlength="25" placeholder="e.g., Software Engineer" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Profile Photo (Auto-Crop)</label>
+                        <label for="f-img" class="block text-xs font-bold text-slate-700 uppercase mb-1 cursor-pointer">Profile Photo (Max 2.5MB)</label>
                         <input type="file" id="f-img" class="input-field" accept="image/*" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
+                        <label for="f-phone" class="block text-xs font-bold text-slate-700 uppercase mb-1 cursor-pointer">Phone Number</label>
                         <input type="text" id="f-phone" class="input-field" maxlength="16" placeholder="e.g., +1 234 567 8900" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
+                        <label for="f-email" class="block text-xs font-bold text-slate-700 uppercase mb-1 cursor-pointer">Email Address</label>
                         <input type="email" id="f-email" class="input-field" maxlength="30" placeholder="e.g., contact@domain.com" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Location / Base</label>
+                        <label for="f-loc" class="block text-xs font-bold text-slate-700 uppercase mb-1 cursor-pointer">Location / Base</label>
                         <input type="text" id="f-loc" class="input-field" maxlength="15" placeholder="e.g., New York, NY" required>
                     </div>
                 </div>
                 
                 <div class="mt-4">
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">GitHub / Portfolio Link</label>
+                    <label for="f-github" class="block text-xs font-bold text-slate-700 uppercase mb-1 cursor-pointer">GitHub / Portfolio Link</label>
                     <input type="text" id="f-github" class="input-field" maxlength="25" placeholder="e.g., github.com/username" required>
                 </div>
 
@@ -166,7 +166,7 @@
                 <div class="char-count text-left mb-3">Limit: 3 Entries</div>
                 <div id="capabilities-container" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"></div>
 
-                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Stack & Tools (Comma separated)</label>
+                <label for="f-tools" class="block text-xs font-bold text-slate-700 uppercase mb-1 cursor-pointer">Stack & Tools (Comma separated)</label>
                 <input type="text" id="f-tools" class="input-field" maxlength="80" placeholder="e.g., React, Node.js, AWS, Docker" required>
 
                 <!-- 4. PROJECTS -->
@@ -179,7 +179,6 @@
 
                 <!-- SUBMIT BUTTON -->
                 <div class="pt-10 text-center">
-                    <!-- TRUE SUBMIT BUTTON -->
                     <button type="submit" class="w-full md:w-auto bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-black text-xl px-12 py-5 rounded-2xl shadow-[0_10px_25px_rgba(6,182,212,0.3)] hover:shadow-[0_15px_35px_rgba(6,182,212,0.5)] hover:-translate-y-1 transition-all">
                         Preview Resume 👀
                     </button>
@@ -202,56 +201,61 @@
             </button>
         </div>
 
-        <!-- A4 Template -->
-        <div class="a4-paper" id="resume-document">
-            
-            <aside class="w-[38%] bg-[#0b1120] text-white h-full p-8 flex flex-col">
-                <div class="flex flex-col items-center text-center mb-8">
-                    <div class="w-[130px] h-[130px] rounded-2xl mb-4 bg-gradient-to-tr from-blue-500 to-cyan-400 p-[3px] shadow-[0_0_20px_rgba(14,165,233,0.3)]">
-                        <!-- Image src injected via FileReader Base64 -->
-                        <img id="r-img" src="" alt="Profile" class="w-full h-full object-cover rounded-xl bg-[#1e293b]">
-                    </div>
-                    <h1 id="r-name" class="text-4xl font-black uppercase tracking-tight text-white font-heading mb-1 break-words w-full"></h1>
-                    <h2 id="r-title" class="text-xs font-bold text-cyan-400 tracking-[0.2em] uppercase w-full break-words"></h2>
+        <!-- PATCH 3: Outer flex wrapper to prevent right-edge flush cropping on mobile -->
+        <div class="w-full max-w-[100vw] overflow-x-auto">
+            <div class="min-w-fit flex justify-start lg:justify-center px-4 pb-12">
+                
+                <!-- A4 Template -->
+                <div class="a4-paper shrink-0 shadow-2xl" id="resume-document">
+                    
+                    <aside class="w-[38%] bg-[#0b1120] text-white h-full p-8 flex flex-col">
+                        <div class="flex flex-col items-center text-center mb-8">
+                            <div class="w-[130px] h-[130px] rounded-2xl mb-4 bg-gradient-to-tr from-blue-500 to-cyan-400 p-[3px] shadow-[0_0_20px_rgba(14,165,233,0.3)]">
+                                <img id="r-img" src="" alt="Profile" class="w-full h-full object-cover rounded-xl bg-[#1e293b]">
+                            </div>
+                            <h1 id="r-name" class="text-4xl font-black uppercase tracking-tight text-white font-heading mb-1 break-words w-full"></h1>
+                            <h2 id="r-title" class="text-xs font-bold text-cyan-400 tracking-[0.2em] uppercase w-full break-words"></h2>
+                        </div>
+
+                        <div class="mb-8 w-full">
+                            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-700 pb-2 mb-3">Data Link</h3>
+                            <div class="grid grid-cols-1 gap-3 text-[11px] text-slate-300 font-medium">
+                                <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded border border-slate-700/50"><span class="text-slate-400">Phone</span> <span id="r-phone" class="font-bold"></span></div>
+                                <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded border border-slate-700/50"><span class="text-slate-400">Email</span> <span id="r-email" class="font-bold truncate w-24 text-right"></span></div>
+                                <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded border border-slate-700/50"><span class="text-slate-400">GitHub</span> <span id="r-github" class="font-bold"></span></div>
+                                <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded border border-slate-700/50"><span class="text-slate-400">Base</span> <span id="r-loc" class="font-bold"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8 w-full">
+                            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-700 pb-2 mb-3">Education</h3>
+                            <div id="r-education-list" class="space-y-3"></div>
+                        </div>
+
+                        <div class="mb-8 w-full">
+                            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-700 pb-2 mb-3">Capabilities</h3>
+                            <div id="r-capabilities-list" class="space-y-4"></div>
+                        </div>
+
+                        <div class="w-full mt-auto">
+                            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-700 pb-2 mb-3">Stack & Tools</h3>
+                            <div id="r-tools-list" class="flex flex-wrap gap-2"></div>
+                        </div>
+                    </aside>
+
+                    <main class="w-[62%] bg-white h-full p-10 flex flex-col">
+                        <section class="mb-10">
+                            <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest border-b-2 border-slate-200 pb-2 mb-4">Skills</h3>
+                            <div id="r-core-skills-list" class="grid grid-cols-2 gap-4 text-xs font-bold text-slate-700"></div>
+                        </section>
+
+                        <section class="flex-grow">
+                            <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest border-b-2 border-slate-200 pb-2 mb-6">Technical Projects</h3>
+                            <div id="r-projects-list" class="space-y-8"></div>
+                        </section>
+                    </main>
                 </div>
-
-                <div class="mb-8 w-full">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-700 pb-2 mb-3">Data Link</h3>
-                    <div class="grid grid-cols-1 gap-3 text-[11px] text-slate-300 font-medium">
-                        <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded border border-slate-700/50"><span class="text-slate-400">Phone</span> <span id="r-phone" class="font-bold"></span></div>
-                        <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded border border-slate-700/50"><span class="text-slate-400">Email</span> <span id="r-email" class="font-bold truncate w-24 text-right"></span></div>
-                        <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded border border-slate-700/50"><span class="text-slate-400">GitHub</span> <span id="r-github" class="font-bold"></span></div>
-                        <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded border border-slate-700/50"><span class="text-slate-400">Base</span> <span id="r-loc" class="font-bold"></span></div>
-                    </div>
-                </div>
-
-                <div class="mb-8 w-full">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-700 pb-2 mb-3">Education</h3>
-                    <div id="r-education-list" class="space-y-3"></div>
-                </div>
-
-                <div class="mb-8 w-full">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-700 pb-2 mb-3">Capabilities</h3>
-                    <div id="r-capabilities-list" class="space-y-4"></div>
-                </div>
-
-                <div class="w-full mt-auto">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-700 pb-2 mb-3">Stack & Tools</h3>
-                    <div id="r-tools-list" class="flex flex-wrap gap-2"></div>
-                </div>
-            </aside>
-
-            <main class="w-[62%] bg-white h-full p-10 flex flex-col">
-                <section class="mb-10">
-                    <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest border-b-2 border-slate-200 pb-2 mb-4">Skills</h3>
-                    <div id="r-core-skills-list" class="grid grid-cols-2 gap-4 text-xs font-bold text-slate-700"></div>
-                </section>
-
-                <section class="flex-grow">
-                    <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest border-b-2 border-slate-200 pb-2 mb-6">Technical Projects</h3>
-                    <div id="r-projects-list" class="space-y-8"></div>
-                </section>
-            </main>
+            </div>
         </div>
     </div>
 
@@ -259,13 +263,20 @@
     <!-- ENGINE LOGIC                               -->
     <!-- ========================================== -->
     <script>
-        // Store Base64 Image string securely in memory
         let uploadedImageBase64 = "";
 
-        // File Reader logic to handle local image uploads
+        // PATCH 2: Protective Image Size Firewall (Max 2.5MB)
         document.getElementById('f-img').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
+                const maxSize = 2.5 * 1024 * 1024; // 2.5MB limit
+                if (file.size > maxSize) {
+                    alert("This image is too large! Please upload a photo under 2.5MB to prevent the PDF generator from crashing.");
+                    this.value = ""; // Force clear the input
+                    uploadedImageBase64 = "";
+                    return;
+                }
+                
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     uploadedImageBase64 = e.target.result;
@@ -381,7 +392,6 @@
         // COMPILER: DATA INJECTION
         // ==========================================
         function compileResume(e) {
-            // Native Form validation intercepts empty submissions
             e.preventDefault(); 
 
             // 1. Personal Data
@@ -434,13 +444,13 @@
                 coreIndex++;
             });
 
-            // 4. Capabilities
+            // 4. Capabilities (Mathematical clamping for visual safety)
             const capContainer = document.getElementById('r-capabilities-list');
             capContainer.innerHTML = '';
             document.querySelectorAll('#capabilities-container > div').forEach(block => {
                 const name = escapeHTML(block.querySelector('.f-cap-name').value);
                 let perc = parseInt(block.querySelector('.f-cap-perc').value);
-                perc = Math.max(1, Math.min(100, isNaN(perc) ? 50 : perc)); // Math Safety
+                perc = Math.max(1, Math.min(100, isNaN(perc) ? 50 : perc)); 
                 
                 capContainer.innerHTML += `
                     <div>
